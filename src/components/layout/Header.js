@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "./Header.css";
 import {
   Container,
@@ -17,6 +17,7 @@ import CartContext from "../../store/cart-context";
 
 function Header() {
   const history = useHistory();
+  const [logstate, setLogstate] = useState(true);
   const cartCtx = useContext(CartContext);
   const numberOfCartItem = cartCtx.items.reduce((curNumber, item) => {
     return curNumber + item.quantity;
@@ -26,6 +27,7 @@ function Header() {
     cartCtx.logout();
     history.replace("/login");
   }
+  console.log(logstate);
   return (
     <div>
       <Navbar
@@ -47,8 +49,24 @@ function Header() {
             <Navbar.Text style={{ cursor: "pointer" }} onClick={logoutHandler}>
               Logout
             </Navbar.Text>
+          ) : logstate ? (
+            <NavLink
+              onClick={() => {
+                setLogstate(false);
+              }}
+              to={"/signup"}
+            >
+              Signup
+            </NavLink>
           ) : (
-            <NavLink to={"/login"}>Login</NavLink>
+            <NavLink
+              onClick={() => {
+                setLogstate(true);
+              }}
+              to={"/login"}
+            >
+              Login
+            </NavLink>
           )}
 
           <Nav>

@@ -10,6 +10,7 @@ export default function SignUp() {
   const passRef = useRef("");
   async function signUpHandler(e) {
     e.preventDefault();
+    console.log("email", emailRef.current);
     const email = emailRef.current.value;
     const password = passRef.current.value;
     const res = await fetch(
@@ -62,7 +63,7 @@ export default function SignUp() {
           />
         </Form.Group>
         <Button variant="primary" type="submit">
-          SignUp
+          Signup
         </Button>
       </Form>
     </Container>

@@ -78,7 +78,6 @@ function Login() {
         <Button variant="primary" type="submit">
           Login
         </Button>
-        <Form.Text onClick={SignUpHandler}>SignUp</Form.Text>
       </Form>
     </Container>
   );
